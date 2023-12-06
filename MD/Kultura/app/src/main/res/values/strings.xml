@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Kultura</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="scan_fragment">Scan Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="greeting_home">Hai,\nMau cari tau tentang apa?</string>
+    <string name="cari_topeng">Cari\nTopeng</string>
+    <string name="cari_pengrajin">Cari\nPengrajin</string>
+    <string name="scan">Scan</string>
+</resources>
