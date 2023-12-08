@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Kultura</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="scan_fragment">Scan Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="greeting_home">Hai,\nMau cari tau tentang apa?</string>
+    <string name="cari_topeng">Cari\nTopeng</string>
+    <string name="cari_pengrajin">Cari\nPengrajin</string>
+    <string name="scan">Scan</string>
+    <string name="gambar_topeng">Gambar Topeng</string>
+    <string name="nama_topeng">Bujuh</string>
+    <string name="deskripsi_topeng">Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</string>
+
+
+    <string-array name="data_topeng_name">
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+        <item>Bujuh</item>
+
+    </string-array>
+
+    <string-array name="data_description">
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+        <item>Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</item>
+    </string-array>
+
+</resources>
