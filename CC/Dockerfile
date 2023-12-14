@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 8080
 
-CMD ["python", "run_waitress.py"]
+CMD ["waitress-serve", "--listen=0.0.0.0:8080", "run:app"]
