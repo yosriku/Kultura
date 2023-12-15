@@ -2,7 +2,7 @@ from flask import request,jsonify,Blueprint
 from keras.preprocessing import image
 from PIL import Image
 import numpy as np
-from utils import preprocess_input_data,topeng_bali_array,products
+from app.utils import preprocess_input_data,topeng_bali_array,products
 from keras.models import load_model
 import os
 
