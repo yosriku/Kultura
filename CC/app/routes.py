@@ -2,8 +2,10 @@ from flask import request,jsonify,Blueprint
 from keras.preprocessing import image
 from PIL import Image
 import numpy as np
-from app.utils import preprocess_input_data,topeng_bali_array,products
+from app.utils import preprocess_input_data,topeng_bali_array,products ##nanti tambahin jadi app.utils
+import tensorflow_hub as hub
 from keras.models import load_model
+import tensorflow as tf
 import os
 
 
@@ -11,12 +13,14 @@ routes = Blueprint('routes',__name__)
 model = None
 
 def load_keras_model():
-    global model
-    try:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        model_path = os.path.join(script_dir, 'kultura_model.h5')
-        model = load_model(model_path)
-    except Exception as e:
+  global model
+  try:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(script_dir, 'kultura_model_with_hub_keras_layer.h5')
+    model =tf.keras.models.load_model(
+      model_path,
+      custom_objects={'KerasLayer':hub.KerasLayer})
+  except Exception as e:
         print("Loading model Error:", str(e))
         model = None
         return 500
@@ -38,7 +42,7 @@ def predict():
     if file.filename == '':
       return jsonify({'error':'No Selected File'}),400
     
-    img = Image.open(file).resize((150,150)).convert('RGB')
+    img = Image.open(file).resize((224,224)).convert('RGB')
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
 
