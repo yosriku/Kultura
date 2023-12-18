@@ -68,7 +68,7 @@ def get_all_topeng():
 
 @routes.route('/topeng/<int:product_id>',methods=['GET'])
 def get_product(product_id):
-  product = products.get(product_id)
+  product = next((mask for mask in products["topeng"] if mask["id"] == product_id), None)
   if product:
     return jsonify(product)
   else:

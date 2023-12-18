@@ -4,4 +4,3 @@ Pillow==10.1.0
 tensorflow==2.13.1
 gunicorn==21.2.0
 tensorflow_hub==0.15.0
-google-cloud-storage==2.14.0
