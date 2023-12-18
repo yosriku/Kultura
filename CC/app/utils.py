@@ -1,6 +1,12 @@
 def preprocess_input_data(input_data):
     return input_data / 255.0
 
+ALLOWED_EXTENSIONS = {'png','jpg','jpeg'}
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 topeng_bali_array =['Topeng Bujuh','Topeng Dalem','Topeng Keras','Topeng Penasar','Topeng Sidakarya','Topeng Tua','Topeng Wijil']
 
 products = {
