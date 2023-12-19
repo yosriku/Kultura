@@ -40,12 +40,13 @@
         <TextView
             android:id="@+id/tv_nama_topeng"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/nama_topeng"
             android:textSize="24sp"
+            android:textColor="@color/primary"
             android:fontFamily="@font/poppins_semi_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cv_photo"
@@ -53,12 +54,11 @@
 
         <TextView
             android:id="@+id/tv_deskripsi_topeng"
-            android:layout_width="0dp"
+            android:layout_width="225dp"
             android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="40dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/deskripsi_topeng"
             android:textSize="14sp"
@@ -68,6 +68,20 @@
             app:layout_constraintStart_toEndOf="@+id/cv_photo"
             app:layout_constraintTop_toBottomOf="@+id/tv_nama_topeng"
             app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:src="@drawable/baseline_arrow_circle_up_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.978"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.917"
+            app:tint="@color/primary" />
 
         <!--        <TextView-->
 <!--            android:id="@+id/tv_item_name"-->

@@ -15,6 +15,11 @@
     <string name="gambar_topeng">Gambar Topeng</string>
     <string name="nama_topeng">Bujuh</string>
     <string name="deskripsi_topeng">Topeng Bujuh merupakan \'topeng spesialis lucu\' di antara topeng Bali lainnya seperti topeng tua dan topeng keras, menurut keterangan tersebut. Tari Topeng Bujuh, lanjutnya, termasuk yang sangat digemari penonton, khususnya anak-anak, dan biasanya sang penari topeng akan menari sambil berinteraksi dengan penonton.</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="upload">Upload</string>
+    <string name="foto">foto</string>
+    <string name="settings_fragment">Settings Fragment</string>
 
 
     <string-array name="data_topeng_name">
