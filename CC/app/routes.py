@@ -30,36 +30,27 @@ load_keras_model()
 def predict():
   if model is None:
     return jsonify({'Error':'Model not loaded'}),500
+
+  if 'file' not in request.files:
+    return jsonify({'Error':'No file'}),400
+  
+  file = request.files['file']
+
+  if file.filename == '':
+    return jsonify({'error':'No Selected File'}),400
   
   try:
-    if 'file' not in request.files:
-      return jsonify({'Error':'No file'}),400
-    
-    file = request.files['file']
-
-    if file.filename == '':
-      return jsonify({'error':'No Selected File'}),400
-    
-    
-    
-
+    timestamped_name = datetime.now().strftime("%Y%m%d%H%M%S") + '_' + file.filename
+    upload_bucket_file(file.stream, timestamped_name)
     img = Image.open(file).resize((224,224)).convert('RGB')
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
-
     input_data = preprocess_input(img_array)
-
     prediction = model.predict(input_data)
     prediction_array = prediction.tolist()
     predicted_index = np.argmax(prediction_array)
     predicted_class = topeng_bali_array[predicted_index]
-
-    if file:
-      timestamped_name = datetime.now().strftime("%Y%m%d%H%M%S") + '_' + predicted_class
-      file.seek(0, os.SEEK_SET)
-      upload_bucket_file(file.stream, timestamped_name)
     return jsonify({'Hasil':predicted_class})
-  
   except Exception as e:
     return jsonify({'error':str(e)}),500
   

@@ -22,4 +22,4 @@ def upload_bucket_file(source_file_path, destination_file_name):
         return "File has uploaded to Bucket"
     except Exception as e:
         print(str(e))
-        return str(e)
+        return
