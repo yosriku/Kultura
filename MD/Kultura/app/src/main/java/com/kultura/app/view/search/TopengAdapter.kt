@@ -1,50 +1,49 @@
 package com.kultura.app.view.search
 
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.kultura.app.R
-import com.kultura.app.data.local.Topeng
-import com.kultura.app.view.detail.DetailTopengActivity
+import com.bumptech.glide.Glide
+import com.kultura.app.data.response.TopengItem
+import com.kultura.app.databinding.ItemTopengBinding
 
-class TopengAdapter(private val listTopeng: ArrayList<Topeng>) : RecyclerView.Adapter<TopengAdapter.ListViewHolder>() {
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
+class TopengAdapter : ListAdapter<TopengItem, TopengAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val binding = ItemTopengBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvName: TextView = itemView.findViewById(R.id.tv_nama_topeng)
-        val tvDescription: TextView = itemView.findViewById(R.id.tv_deskripsi_topeng)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val user = getItem(position)
+        holder.bind(user)
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_topeng, parent, false)
-        return ListViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val(name, description) = listTopeng[position]
-        holder.tvName.text = name
-        holder.tvDescription.text = description
-
-        holder.itemView.setOnClickListener {
-            val intentDetail = Intent(holder.itemView.context, DetailTopengActivity::class.java)
-            intentDetail.putExtra(DetailTopengActivity.EXTRA_TOPENG, listTopeng[holder.adapterPosition])
-            holder.itemView.context.startActivity(intentDetail)
+    class MyViewHolder(private val binding: ItemTopengBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(user: TopengItem) {
+            binding.tvNamaTopeng.text = user.name
+            Glide.with(binding.root).load(user.imageUrl).into(binding.ivItemPhoto)
+            binding.tvDeskripsiTopeng.text = user.informasi
         }
     }
 
-    override fun getItemCount(): Int = listTopeng.size
 
-    
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Topeng)
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TopengItem>(){
+            override fun areItemsTheSame(oldItem: TopengItem, newItem: TopengItem): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: TopengItem, newItem: TopengItem): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
+
+
 
 }

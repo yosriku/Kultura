@@ -11,6 +11,6 @@
         android:title="@string/scan" />
     <item
         android:id="@+id/profile_menu"
-        android:icon="@drawable/baseline_person_24"
-        android:title="@string/profile" />
+        android:icon="@drawable/baseline_settings_24"
+        android:title="@string/settings" />
 </menu>

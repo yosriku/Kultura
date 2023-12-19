@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import com.kultura.app.R
 import com.kultura.app.databinding.ActivityMainBinding
 import com.kultura.app.view.navigation.HomeFragment
-import com.kultura.app.view.navigation.ProfileFragment
 import com.kultura.app.view.navigation.ScanFragment
+import com.kultura.app.view.navigation.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,14 +23,12 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.home_menu -> replaceFragment(HomeFragment())
                 R.id.scan_menu -> replaceFragment(ScanFragment())
-                R.id.profile_menu -> replaceFragment(ProfileFragment())
+                R.id.profile_menu -> replaceFragment(SettingsFragment())
                 else -> {
                 }
             }
             true
         }
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -39,6 +37,4 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
-
-
 }

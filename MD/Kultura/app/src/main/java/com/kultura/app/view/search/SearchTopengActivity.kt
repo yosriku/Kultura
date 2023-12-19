@@ -1,57 +1,50 @@
 package com.kultura.app.view.search
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.kultura.app.R
-import com.kultura.app.data.local.Topeng
+import com.kultura.app.data.remote.ApiConfig
+import com.kultura.app.data.repository.TopengRepository
+import com.kultura.app.data.response.TopengItem
+import com.kultura.app.databinding.ActivitySearchTopengBinding
+import com.kultura.app.view.SearchTopengViewModelFactory
 
 class SearchTopengActivity : AppCompatActivity() {
 
-    private lateinit var rvTopeng: RecyclerView
-    private val list = ArrayList<Topeng>()
 
+
+
+    private lateinit var binding: ActivitySearchTopengBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_topeng)
+        binding = ActivitySearchTopengBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        rvTopeng = findViewById(R.id.rv_topeng)
-        rvTopeng.setHasFixedSize(true)
+        val apiService = ApiConfig.getApiService()
+        val topengRepository = TopengRepository(apiService) // Create an instance of TopengRepository
+
+        val viewModelFactory = SearchTopengViewModelFactory(topengRepository)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(SearchTopengViewModel::class.java)
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvTopeng.layoutManager = layoutManager
+
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvTopeng.addItemDecoration(itemDecoration)
 
 
-        list.addAll(getListTopeng())
-        showRecyclerList()
-    }
-
-    fun getListTopeng(): ArrayList<Topeng> {
-        val dataName = resources.getStringArray(R.array.data_topeng_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val listTopeng = ArrayList<Topeng>()
-
-        for (i in dataName.indices) {
-            val player = Topeng(dataName[i], dataDescription[i])
-            listTopeng.add(player)
+        viewModel.listTopeng.observe(this) {listTopeng ->
+            setTopengData(listTopeng)
         }
-        return listTopeng
+
     }
 
-    private fun showRecyclerList() {
-        rvTopeng.layoutManager = LinearLayoutManager(this)
-        val topengAdapter = TopengAdapter(list)
-        rvTopeng.adapter = topengAdapter
-
-        topengAdapter.setOnItemClickCallback(object : TopengAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Topeng) {
-                showSelectedPlayer(data)
-            }
-        })
+    private fun setTopengData(data: List<TopengItem>) {
+        val adapter = TopengAdapter()
+        adapter.submitList(data)
+        binding.rvTopeng.adapter = adapter
     }
-    private fun showSelectedPlayer(topeng: Topeng) {
-        Toast.makeText(this, "Kamu memilih " + topeng.name, Toast.LENGTH_SHORT).show()
-    }
-
-
 
 }
