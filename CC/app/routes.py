@@ -3,7 +3,10 @@ from keras.preprocessing import image
 from PIL import Image
 import numpy as np
 from app.utils import preprocess_input_data,topeng_bali_array,products ##nanti tambahin jadi app.utils
-import tensorflow_hub as hub
+from app.upload import upload_bucket_file
+from keras.models import load_model
+from datetime import datetime
+from keras.applications.vgg16 import preprocess_input
 import tensorflow as tf
 import os
 
@@ -14,12 +17,7 @@ model = None
 def load_keras_model():
   global model
   try:
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    model_path = os.path.join(script_dir, 'vgg16_neural_network.h5')
-    model =tf.keras.models.load_model(
-      model_path,
-      custom_objects={'KerasLayer':hub.KerasLayer})
-    print("Model loaded")
+    model = load_model('vgg16_neural_network.h5')
   except Exception as e:
         print("Loading model Error:", str(e))
         model = None
@@ -44,22 +42,26 @@ def predict():
     
     
     
+
     img = Image.open(file).resize((224,224)).convert('RGB')
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
 
-    input_data = preprocess_input_data(img_array)
+    input_data = preprocess_input(img_array)
 
     prediction = model.predict(input_data)
     prediction_array = prediction.tolist()
     predicted_index = np.argmax(prediction_array)
     predicted_class = topeng_bali_array[predicted_index]
 
-    
+    if file:
+      timestamped_name = datetime.now().strftime("%Y%m%d%H%M%S") + '_' + predicted_class
+      file.seek(0, os.SEEK_SET)
+      upload_bucket_file(file.stream, timestamped_name)
     return jsonify({'Hasil':predicted_class})
   
   except Exception as e:
-    return jsonify({'error':str(e)})
+    return jsonify({'error':str(e)}),500
   
 
 @routes.route('/topeng')
