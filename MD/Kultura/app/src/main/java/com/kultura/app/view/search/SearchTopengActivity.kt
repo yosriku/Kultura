@@ -23,7 +23,7 @@ class SearchTopengActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val apiService = ApiConfig.getApiService()
-        val topengRepository = TopengRepository(apiService) // Create an instance of TopengRepository
+        val topengRepository = TopengRepository(apiService)
 
         val viewModelFactory = SearchTopengViewModelFactory(topengRepository)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SearchTopengViewModel::class.java)
