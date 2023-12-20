@@ -2,6 +2,7 @@ package com.kultura.app.view.detail
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -37,10 +38,11 @@ class DetailTopengActivity : AppCompatActivity() {
         binding.appBar.setNavigationOnClickListener{
             finish()
         }
-
+        showLoading(true)
         viewModel.getDetailTopeng(id)
         viewModel.detailTopeng.observe(this) { topeng ->
             setDetailTopeng(topeng)
+            showLoading(false)
         }
     }
 
@@ -54,6 +56,10 @@ class DetailTopengActivity : AppCompatActivity() {
         binding.appBar.title = topeng?.name
         binding.tvDeskripsiDetail.text = topeng?.informasi
         binding.tvHargaDetail.text = topeng?.kisaranHarga
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object {
