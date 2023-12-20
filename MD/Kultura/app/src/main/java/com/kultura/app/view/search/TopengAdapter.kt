@@ -1,5 +1,6 @@
 package com.kultura.app.view.search
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kultura.app.data.response.TopengItem
 import com.kultura.app.databinding.ItemTopengBinding
+import com.kultura.app.view.detail.DetailTopengActivity
 
 
 class TopengAdapter : ListAdapter<TopengItem, TopengAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -20,6 +22,13 @@ class TopengAdapter : ListAdapter<TopengItem, TopengAdapter.MyViewHolder>(DIFF_C
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user = getItem(position)
         holder.bind(user)
+
+        holder.itemView.setOnClickListener {
+            val intentDetail = Intent(holder.itemView.context, DetailTopengActivity::class.java)
+            intentDetail.putExtra(DetailTopengActivity.EXTRA_ID, user.id.toString())
+            holder.itemView.context.startActivity(intentDetail)
+
+        }
 
     }
 
