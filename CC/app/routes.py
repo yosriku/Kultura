@@ -2,7 +2,7 @@ from flask import request,jsonify,Blueprint
 from keras.preprocessing import image
 from PIL import Image
 import numpy as np
-from app.utils import preprocess_input_data,topeng_bali_array,products ##nanti tambahin jadi app.utils
+from app.utils import topeng_bali_array,products ##nanti tambahin jadi app.utils
 from app.upload import upload_bucket_file
 from keras.models import load_model
 from datetime import datetime
@@ -40,17 +40,18 @@ def predict():
     return jsonify({'error':'No Selected File'}),400
   
   try:
-    timestamped_name = datetime.now().strftime("%Y%m%d%H%M%S") + '_' + file.filename
-    upload_bucket_file(file.stream, timestamped_name)
-    img = Image.open(file).resize((224,224)).convert('RGB')
+    # timestamped_name = datetime.now().strftime("%Y%m%d%H%M%S") + '_' + file.filename
+    # upload_bucket_file(file.stream, timestamped_name)
+    img_path= file
+    img = Image.open(img_path).resize((224,224)).convert('RGB')
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     input_data = preprocess_input(img_array)
     prediction = model.predict(input_data)
     prediction_array = prediction.tolist()
-    predicted_index = np.argmax(prediction_array)
+    predicted_index = int(np.argmax(prediction_array))
     predicted_class = topeng_bali_array[predicted_index]
-    return jsonify({'Hasil':predicted_class})
+    return jsonify({'Hasil':[{'id':predicted_index+1,'nama':predicted_class,}]})
   except Exception as e:
     return jsonify({'error':str(e)}),500
   
