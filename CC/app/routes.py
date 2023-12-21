@@ -17,7 +17,7 @@ model = None
 def load_keras_model():
   global model
   try:
-    model = load_model('vgg16_neural_network.h5')
+    model = load_model('kultura_model.h5')
   except Exception as e:
         print("Loading model Error:", str(e))
         model = None
@@ -43,7 +43,7 @@ def predict():
     # timestamped_name = datetime.now().strftime("%Y%m%d%H%M%S") + '_' + file.filename
     # upload_bucket_file(file.stream, timestamped_name)
     img_path= file
-    img = Image.open(img_path).resize((224,224)).convert('RGB')
+    img = Image.open(img_path).resize((150,150)).convert('RGB')
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     input_data = preprocess_input(img_array)
