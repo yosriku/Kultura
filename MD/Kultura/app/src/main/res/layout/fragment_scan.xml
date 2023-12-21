@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_scan_photo"
-        android:layout_width="375dp"
+        android:layout_width="350dp"
         android:layout_height="375dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -45,6 +45,7 @@
         android:id="@+id/gallery_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="72dp"
         android:text="@string/gallery"
@@ -59,6 +60,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/camera"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/cv_scan_photo"
@@ -79,6 +81,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camera_button"
         app:layout_constraintVertical_bias="0.225" />
+
+    <TextView
+        android:id="@+id/tv_guide_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        android:text="@string/panduan_text_scan"
+        android:textStyle="italic"
+        android:textColor="@color/red"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/scan_button"
+        app:layout_constraintStart_toStartOf="@+id/scan_button"
+        tools:ignore="SmallSp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

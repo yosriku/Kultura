@@ -15,12 +15,17 @@ class SearchTopengViewModel(private val repository: TopengRepository) : ViewMode
     private val _listTopeng = MutableLiveData<List<TopengItem>>()
     val listTopeng: LiveData<List<TopengItem>> = _listTopeng
 
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     init {
         getTopeng()
     }
 
 
     private fun getTopeng() {
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val topeng = repository.getTopeng().topeng
@@ -28,7 +33,7 @@ class SearchTopengViewModel(private val repository: TopengRepository) : ViewMode
             } catch (e: Exception) {
                 Log.e("Error", e.message ?: "Unknown error occurred")
             } finally {
-
+                _isLoading.value = false
             }
         }
     }
