@@ -23,7 +23,6 @@ class SearchTopengViewModel(private val repository: TopengRepository) : ViewMode
         getTopeng()
     }
 
-
     private fun getTopeng() {
         _isLoading.value = true
         viewModelScope.launch {
@@ -32,6 +31,9 @@ class SearchTopengViewModel(private val repository: TopengRepository) : ViewMode
                 _listTopeng.postValue(topeng)
             } catch (e: Exception) {
                 Log.e("Error", e.message ?: "Unknown error occurred")
+                if (e.message == "timeout"){
+
+                }
             } finally {
                 _isLoading.value = false
             }

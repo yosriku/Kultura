@@ -15,6 +15,15 @@
         android:theme="@style/Theme.Kultura"
         tools:targetApi="31">
         <activity
+            android:name=".view.splash.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".view.guide.GuideActivity"
             android:exported="false" />
         <activity
@@ -26,12 +35,8 @@
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

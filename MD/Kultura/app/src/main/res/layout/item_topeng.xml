@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/gambar_topeng"
                 android:scaleType="centerCrop"
-                android:src="@drawable/topeng_bujuh" />
+                android:src="@drawable/baseline_image_24" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/nama_topeng"
+            android:text=""
             android:textSize="24sp"
             android:textColor="@color/primary"
             android:fontFamily="@font/poppins_semi_bold"
@@ -60,7 +60,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/deskripsi_topeng"
+            android:text=""
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

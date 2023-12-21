@@ -13,9 +13,6 @@ import com.kultura.app.view.SearchTopengViewModelFactory
 
 class SearchTopengActivity : AppCompatActivity() {
 
-
-
-
     private lateinit var binding: ActivitySearchTopengBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +39,6 @@ class SearchTopengActivity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
-
-
-
     }
 
     private fun setTopengData(data: List<TopengItem>) {

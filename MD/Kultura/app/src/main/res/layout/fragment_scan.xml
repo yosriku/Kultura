@@ -91,6 +91,7 @@
         android:textStyle="italic"
         android:textColor="@color/red"
         android:textSize="10sp"
+        android:fontFamily="@font/poppins_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/scan_button"
         app:layout_constraintStart_toStartOf="@+id/scan_button"

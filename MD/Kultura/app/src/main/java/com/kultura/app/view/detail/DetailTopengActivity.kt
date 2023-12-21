@@ -13,12 +13,7 @@ import com.kultura.app.databinding.ActivityDetailTopengBinding
 import com.kultura.app.view.SearchTopengViewModelFactory
 
 class DetailTopengActivity : AppCompatActivity() {
-
-
-
     private lateinit var binding: ActivityDetailTopengBinding
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +47,6 @@ class DetailTopengActivity : AppCompatActivity() {
             .load(topeng?.imageUrl)
             .into(binding.ivDetail)
 
-//        binding.tvDetailName.text = topeng?.topeng?.name
         binding.appBar.title = topeng?.name
         binding.tvDeskripsiDetail.text = topeng?.informasi
         binding.tvHargaDetail.text = topeng?.kisaranHarga

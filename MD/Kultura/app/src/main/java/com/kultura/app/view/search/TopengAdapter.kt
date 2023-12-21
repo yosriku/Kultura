@@ -27,9 +27,7 @@ class TopengAdapter : ListAdapter<TopengItem, TopengAdapter.MyViewHolder>(DIFF_C
             val intentDetail = Intent(holder.itemView.context, DetailTopengActivity::class.java)
             intentDetail.putExtra(DetailTopengActivity.EXTRA_ID, user.id.toString())
             holder.itemView.context.startActivity(intentDetail)
-
         }
-
     }
 
     class MyViewHolder(private val binding: ItemTopengBinding) : RecyclerView.ViewHolder(binding.root){

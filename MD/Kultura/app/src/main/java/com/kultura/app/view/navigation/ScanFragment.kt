@@ -41,7 +41,7 @@ class ScanFragment : Fragment() {
                 currentImageUri = uri
                 showImage()
             } else {
-                Log.d("Photo Picker", "No media selected")
+                showToast("No Media Selected")
             }
         }
 
