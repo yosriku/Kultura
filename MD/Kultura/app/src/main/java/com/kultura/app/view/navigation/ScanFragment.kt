@@ -52,6 +52,23 @@ class ScanFragment : Fragment() {
             }
         }
 
+    private fun allPermissionsGranted() =
+        ContextCompat.checkSelfPermission(
+            requireContext(),
+            REQUIRED_PERMISSION
+        ) == PackageManager.PERMISSION_GRANTED
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(requireContext(), "Permission request granted", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(), "Permission request denied", Toast.LENGTH_LONG).show()
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,14 +76,24 @@ class ScanFragment : Fragment() {
     ): View {
         binding = FragmentScanBinding.inflate(inflater, container, false)
         return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(!allPermissionsGranted()){
+            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+        }
+
+
         binding.galleryButton.setOnClickListener {startGallery()}
-        binding.cameraButton.setOnClickListener {startCamera()}
+        binding.cameraButton.setOnClickListener {
+            startCamera()
+        }
         binding.scanButton.setOnClickListener {
+
             val foto = binding.ivScanPhoto.drawable
             if (foto != null) {
                 uploadImage()
@@ -139,22 +166,7 @@ class ScanFragment : Fragment() {
         }
     }
 
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(
-            requireContext(),
-            REQUIRED_PERMISSION
-        ) == PackageManager.PERMISSION_GRANTED
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            if (isGranted) {
-                Toast.makeText(requireContext(), "Permission request granted", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(requireContext(), "Permission request denied", Toast.LENGTH_LONG).show()
-            }
-        }
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA

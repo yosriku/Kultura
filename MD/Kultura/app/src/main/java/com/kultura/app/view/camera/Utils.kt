@@ -11,6 +11,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
+import com.kultura.app.BuildConfig
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -18,7 +19,6 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import de.hdodenhof.circleimageview.BuildConfig
 
 private const val MAXIMAL_SIZE = 1000000 //1 MB
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
